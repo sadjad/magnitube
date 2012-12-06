@@ -36,12 +36,12 @@ def show_list(request, video_id):
 	for i in range(len(output) / 3):
 		links.append([output[3*i].replace("http://", ""), output[3*i + 1], output[3*i + 2]])
 	
-	try:
+	"""try:
 		del request.session['links']
 	except:
 		pass
 		
-	request.session['links'] = links
+	request.session['links'] = links"""
 	
 	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id})	
 	
