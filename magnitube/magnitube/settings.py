@@ -1,5 +1,3 @@
-# Django settings for magnitube project.
-
 import os.path
 
 here = lambda x : os.path.join(os.path.abspath(os.path.dirname(__file__)), x)
