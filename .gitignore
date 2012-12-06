@@ -35,3 +35,9 @@ nosetests.xml
 .pydevproject
 
 *.pyc
+
+*.db
+
+*.pyc
+
+*.pyc
