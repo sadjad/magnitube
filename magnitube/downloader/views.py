@@ -55,7 +55,7 @@ def download(request, video_id, id):
 	response = HttpResponse()
 	response['Content-Type'] = 'application/octet-stream'
 	response['Content-Disposition'] = 'Content-Disposition: attachment; filename="%s"' % links[id][1]
-	response['X-Accel-Redirect'] = "/download/%s#%s" % ("/".join(url.split("?")), links[id][1])
+	response['X-Accel-Redirect'] = "/download/%s/%s" % ("/".join(url.split("?")), links[id][1])
 	
 	return response
 	
