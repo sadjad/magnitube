@@ -34,7 +34,7 @@ def show_list(request, video_id):
 	links = {}
 	
 	for i in range(len(output) / 3):
-		links[int(output[3*i + 2]] = [output[3*i].replace("http://", ""), output[3*i + 1]]
+		links[int(output[3*i + 2])] = [output[3*i].replace("http://", ""), output[3*i + 1]]
 	
 	try:
 		del request.session['links']
