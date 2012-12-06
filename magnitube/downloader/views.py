@@ -51,7 +51,7 @@ def download(request, video_id, id):
 	url = links[int(id)][0]
 	response = HttpResponse()
 	response['Content-type'] = ''
-	response['X-Accel-Redirect'] = url
+	response['X-Accel-Redirect'] = "/download/url#%s" % links[int(id)][1]
 	
 	return response
 	
