@@ -37,15 +37,9 @@ def show_list(request, video_id):
 	
 	for i in range(len(output) / 3):
 		links[int(output[3*i + 2])] = [output[3*i].replace("http://", ""), output[3*i + 1]]
-		
-	links['video_id'] = video_id
 	
-	try:
-		del request.session['links']
-	except:
-		pass
-		
 	request.session['links'] = links
+	request.session['video_id'] = video_id
 	
 	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id, 'formats': FORMATS})	
 	
@@ -55,7 +49,7 @@ def download(request, video_id, id):
 	links = request.session['links']
 	url = links[id][0]
 	
-	if video_id != links['video_id']:
+	if 'video_id' not in request.session or video_id != request.session['video_id']:
 		return HttpResponseRedirect('/%s/' % video_id)
 	
 	response = HttpResponse()
