@@ -30,13 +30,11 @@ def show_list(request, video_id):
 	
 	output, errors = p.communicate()
 	output = output.split('\n')
-	
-	print output
-	
+
 	links = []
 	
 	for i in range(len(output) / 3):
-		links.append([output[3*i], output[3*i + 1], output[3*i + 2]])
+		links.append([output[3*i].replace("http://", ""), output[3*i + 1], output[3*i + 2]])
 	
 	try:
 		del request.session['links']
