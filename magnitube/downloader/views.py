@@ -37,6 +37,8 @@ def show_list(request, video_id):
 	
 	for i in range(len(output) / 3):
 		links[int(output[3*i + 2])] = [output[3*i].replace("http://", ""), output[3*i + 1]]
+		
+	links['video_id'] = video_id
 	
 	try:
 		del request.session['links']
@@ -52,6 +54,10 @@ def download(request, video_id, id):
 	id = int(id)
 	links = request.session['links']
 	url = links[id][0]
+	
+	if video_id != links['video_id']:
+		return HttpResponseRedirect('/%s/' % video_id)
+	
 	response = HttpResponse()
 	response['Content-Type'] = 'application/octet-stream'
 	response['Content-Disposition'] = 'attachment; filename="%s"' % links[id][1]
