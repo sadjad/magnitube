@@ -47,11 +47,13 @@ def show_list(request, video_id):
 	
 
 def download(request, video_id, id):
+	id = int(id)
 	links = request.session['links']
-	url = links[int(id)][0]
+	url = links[id][0]
 	response = HttpResponse()
-	response['Content-type'] = ''
-	response['X-Accel-Redirect'] = "/download/%s" % ("/".join(url.split("?")))
+	response['Content-Type'] = 'application/octet-stream'
+	response['Content-Disposition'] = 'Content-Disposition: attachment; filename="%s"' %s links[id][1]
+	response['X-Accel-Redirect'] = "/download/%s#%s" % ("/".join(url.split("?")), links[id][1])
 	
 	return response
 	
