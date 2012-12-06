@@ -2,8 +2,8 @@
 
 {% block content %}
 <ul>
-{% for link in links %}
-<li><a href="/download/{{link.0}}/">fmt = {{link.2}}</a></li>
+{% for fmt, link in links.iteritems %}
+<li><a href="/{{video_id}}/{{fmt}}/">fmt = {{fmt}}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}

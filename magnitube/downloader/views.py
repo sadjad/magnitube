@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from formats import FORMATS
 
@@ -31,21 +31,28 @@ def show_list(request, video_id):
 	output, errors = p.communicate()
 	output = output.split('\n')
 
-	links = []
+	links = {}
 	
 	for i in range(len(output) / 3):
-		links.append([output[3*i].replace("http://", ""), output[3*i + 1], output[3*i + 2]])
+		links[int(output[3*i + 2]] = [output[3*i].replace("http://", ""), output[3*i + 1]]
 	
-	"""try:
+	try:
 		del request.session['links']
 	except:
 		pass
 		
-	request.session['links'] = links"""
+	request.session['links'] = links
 	
 	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id})	
 	
 
 def download(request, video_id, id):
-	pass
+	links = request.session['links']
+	url = links[int(id)][0]
+	response = HttpResponse()
+	response['Content-type'] = ''
+	response['X-Accel-Redirect'] = url
+	
+	return response
+	
 	
