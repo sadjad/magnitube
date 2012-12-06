@@ -1,9 +1,15 @@
-{% extends "main_template.html" %}
+{% extends "downloader/index.html" %}
+{% load dict_extras %}
 
-{% block content %}
-<ul>
-{% for fmt, link in links.iteritems %}
-<li><a href="/{{video_id}}/{{fmt}}/">fmt = {{fmt}}</a></li>
-{% endfor %}
-</ul>
+{% block results %}
+<fieldset class="results">
+	<legend>Download Links</legend>
+	<ul>
+	{% for fmt, link in links.iteritems %}
+	<li><a href="/{{video_id}}/{{fmt}}/">{{formats|get_item:fmt|get_item:'ext'}} ({{formats|get_item:fmt|get_item:'resolution'}})</a></li>
+	{% empty %}
+	<li>Nothing Available :(</li>
+	{% endfor %}
+	</ul>
+</fieldset>
 {% endblock %}

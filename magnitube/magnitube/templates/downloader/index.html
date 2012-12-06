@@ -3,7 +3,7 @@
 {% block content %}
 <form action="/process/" method="post">
 	{% csrf_token %}
-	<input type="text" name="url" />
-	<input type="submit" />
+	<input type="text" class="text" name="url" placeholder="YouTube URL..." />
+	<input type="submit" value="Process It!" class="button" />
 </form>
 {% endblock %}

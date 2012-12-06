@@ -2,9 +2,19 @@
 <html>
 <head>
 	<title>Magnitube</title>
+	<link rel="stylesheet" href="{{STATIC_URL}}css/style.css" />
 </head>
 <body>
+	<div id="container">
+		<div id="logo">
+		</div>
 	{% block content %}
 	{% endblock %}
+	{% block results %}
+	{% endblock %}
+	</div>
+	<div id="footer">
+		Brought to you by Alimohammad Rabbani, Sadjad Fouladi.
+	</div>
 </body>
 </html>

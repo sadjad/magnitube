@@ -7,6 +7,8 @@ import urlparse
 import subprocess as sub
 import re
 
+
+
 def index(request):
 	return render(request, "downloader/index.html", {})
 	
@@ -43,7 +45,7 @@ def show_list(request, video_id):
 		
 	request.session['links'] = links
 	
-	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id})	
+	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id, 'formats': FORMATS})	
 	
 
 def download(request, video_id, id):
@@ -52,7 +54,7 @@ def download(request, video_id, id):
 	url = links[id][0]
 	response = HttpResponse()
 	response['Content-Type'] = 'application/octet-stream'
-	response['Content-Disposition'] = 'Content-Disposition: attachment; filename="%s"' %s links[id][1]
+	response['Content-Disposition'] = 'Content-Disposition: attachment; filename="%s"' % links[id][1]
 	response['X-Accel-Redirect'] = "/download/%s#%s" % ("/".join(url.split("?")), links[id][1])
 	
 	return response
