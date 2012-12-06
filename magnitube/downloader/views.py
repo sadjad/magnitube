@@ -14,7 +14,7 @@ def index(request):
 	
 def process_download_request(request):
 	if request.method == 'POST' and 'url' in request.POST:
-		url = request.POST['url']
+		url = request.POST['url'].strip()
 		url_data = urlparse.urlparse(url)
 		url_qs = urlparse.parse_qs(url_data.query)
 		
