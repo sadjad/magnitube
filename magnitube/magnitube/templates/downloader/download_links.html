@@ -1,0 +1,9 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+<ul>
+{% for link in links %}
+<li><a href="/{{video_id}}/{{link.2}}/">fmt = {{link.2}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
