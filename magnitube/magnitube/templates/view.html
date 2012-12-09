@@ -2,22 +2,17 @@
 <html>
 <head>
 	<title>Video: {{ video_id}}</title>	
-	<script
-	  src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
-	</script>
-	<script src="http://releases.flowplayer.org/5.2.0/flowplayer.min.js"></script>
-	<link rel="stylesheet" type="text/css"
-	href="http://releases.flowplayer.org/5.2.0/skin/functional.css" />
-
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="{{STATIC_URL}}mediaelement/mediaelement-and-player.js"></script>
+	<link rel="stylesheet" href="{{STATIC_URL}}mediaelement/mediaelementplayer.css" />
 </head>
 <body>
-	
-	<div class="flowplayer">
-		<!--<video src="http://magnitu.be/{{video_id}}/{{fmt}}/{{filename}}?view=1">
-		</video>-->
-		<video src="http://sadjad.me/media/tQ7fyLTIBTg.mp4"></video>
+	<div class="player">
+		<video src="http://magnitu.be/{{video_id}}/{{fmt}}/{{filename}}?view=1">
+		</video>
 	</div>
-	
-	
+	<script>
+	$('video,audio').mediaelementplayer();
+	</script>
 </body>
 </html>
