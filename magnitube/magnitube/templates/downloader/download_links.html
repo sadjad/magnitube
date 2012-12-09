@@ -21,7 +21,7 @@
 <fieldset class="results">
 	<legend>Preview</legend>
 	<div class="preview">
-		<video src="http://magnitu.be/{{video_id}}/{% firstof (links_dict|get_item:5).0 (links_dict|get_item:6).0 (links_dict|get_item:18).0 (links_dict|get_item:34).0 (links_dict|get_item:43).0 links.0.1 %}/{{filename}}?view=1">
+		<video src="http://magnitu.be/{{video_id}}/{% firstof links_dict|get_item:5|get_item:0 links_dict|get_item:6|get_item:0 links_dict|get_item:18|get_item:0 links_dict|get_item:34|get_item:0 links_dict|get_item:43|get_item:0 links.0.1 %}/{{filename}}?view=1">
 		</video>
 	</div>
 	<script type="text/javascript">
