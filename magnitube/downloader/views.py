@@ -47,13 +47,13 @@ def show_list(request, video_id):
 	
 	if 18 in current_fmts:
 		current_fmt = 18
-	elif 43 in current_fmt:
+	elif 43 in current_fmts:
 		current_fmt = 43
-	elif 34 in current_fmt:
+	elif 34 in current_fmts:
 		current_fmt = 34
-	elif 5 in current_fmt:
+	elif 5 in current_fmts:
 		current_fmt = 5
-	elif 6 in current_fmt:
+	elif 6 in current_fmts:
 		current_fmt = 6
 	else:
 		current_fmt = current_fmts[0]
