@@ -6,7 +6,7 @@ from formats import FORMATS
 import urlparse
 import subprocess as sub
 import re
-import httplib2
+import urllib2
 
 
 
