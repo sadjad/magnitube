@@ -196,13 +196,13 @@ fieldset.results ul {
 }
 
 fieldset.results ul li {
-	margin-bottom:5px;
+	margin-bottom:0.6em;
 }
 
 fieldset.results ul a img {
 	border:0;
 	position:relative;
-	top:1px;
+	top:2px;
 }
 
 #logo {
