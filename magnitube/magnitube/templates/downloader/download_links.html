@@ -7,7 +7,6 @@
 	<ul>
 	{% for fmt, link in links.iteritems %}
 	<li>
-		<a href="http://{{link}}"><img src="{{STATIC_URL}}images/youtube.png" title="YouTube Link" /></a>
 		<a href="/{{video_id}}/{{fmt}}/view/"><img src="{{STATIC_URL}}images/control.png" title="Play" /></a>
 		<a href="/{{video_id}}/{{fmt}}/"><img src="{{STATIC_URL}}images/download.png" title="Download" /> {{formats|get_item:fmt|get_item:'ext'}} ({{formats|get_item:fmt|get_item:'resolution'}})</a></li>
 	{% empty %}
