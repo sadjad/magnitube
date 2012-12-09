@@ -6,7 +6,9 @@
 	<legend>Download Links</legend>
 	<ul>
 	{% for fmt, link in links.iteritems %}
-	<li><a href="/{{video_id}}/{{fmt}}/">{{formats|get_item:fmt|get_item:'ext'}} ({{formats|get_item:fmt|get_item:'resolution'}})</a></li>
+	<li>
+		<a href="/{{video_id}}/{{fmt}}/view/"><img src="{{STATIC_URL}}images/control.png" title="Play" /></a>
+		<a href="/{{video_id}}/{{fmt}}/"><img src="{{STATIC_URL}}images/download.png" title="Download" /> {{formats|get_item:fmt|get_item:'ext'}} ({{formats|get_item:fmt|get_item:'resolution'}})</a></li>
 	{% empty %}
 	<li>Nothing Available :(</li>
 	{% endfor %}

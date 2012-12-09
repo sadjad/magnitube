@@ -1,6 +1,6 @@
 body {
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Geneva, sans-serif;
-	font-size: 15px;
+	font-size: 1em;
 	margin:0;
 	padding:0;
 	background: #eee;
@@ -197,6 +197,12 @@ fieldset.results ul {
 
 fieldset.results ul li {
 	margin-bottom:5px;
+}
+
+fieldset.results ul a img {
+	border:0;
+	position:relative;
+	top:1px;
 }
 
 #logo {
