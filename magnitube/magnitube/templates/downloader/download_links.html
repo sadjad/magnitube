@@ -5,17 +5,34 @@
 <fieldset class="results">
 	<legend>Download Links</legend>
 	<ul>
-	{% for fmt, link in links.iteritems %}
+	{% for fmt, link in links %}
 	<li>
 		{% autoescape off %}
 		<!-- YouTube Link: {{link}} -->
 		{% endautoescape %}
 		<a href="/{{video_id}}/{{fmt}}/view/"><img src="{{STATIC_URL}}images/control.png" title="Play" /></a>
 		<a href="/{{video_id}}/{{fmt}}/"><img src="{{STATIC_URL}}images/download.png" title="Download" /> 
-		{{formats|get_item:fmt|get_item:'ext'}} ({{formats|get_item:fmt|get_item:'resolution'}})</a></li>
+		{{formats|get_item:fmt|get_item:'resolution'}} ({{formats|get_item:fmt|get_item:'ext'}})</a></li>
 	{% empty %}
 	<li>Nothing Available :(</li>
 	{% endfor %}
 	</ul>
 </fieldset>
+<fieldset class="results">
+	<legend>Preview</legend>
+	<div class="preview">
+		<video src="http://magnitu.be/{{video_id}}/{% firstof links_dict|get_item:5 links_dict|get_item:6 links_dict|get_item:18 links_dict|get_item:34 links_dict:43 links.0.1 %}/{{filename}}?view=1">
+		</video>
+	</div>
+	<script type="text/javascript">
+		$('video,audio').mediaelementplayer();
+	</script>
+</fieldset>
+{% endblock %}
+
+{% block extrahead %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="{{STATIC_URL}}mediaelement/mediaelement-and-player.js"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}css/view.css" />
+<link rel="stylesheet" href="{{STATIC_URL}}mediaelement/mediaelementplayer.css" />
 {% endblock %}
