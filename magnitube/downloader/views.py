@@ -7,7 +7,7 @@ import urlparse
 import subprocess as sub
 import re
 import urllib2
-
+import httplib
 
 
 def index(request):
@@ -61,12 +61,12 @@ def download(request, video_id, id):
 	if 'video_id' not in request.session or video_id != request.session['video_id']:
 		return HttpResponseRedirect('/%s/' % video_id)
 		
-	test_request = urllib2.Request("http://%s" % url)
-	test_request.get_method = lambda: 'HEAD'
-	test_response = urllib2.urlopen(test_request)
+	conn = httplib.HTTPConnection(url.split("/")[0])
+	conn.request("HEAD", "/%s" % url.split("/")[1])
+	test_response = conn.getresponse()
 	
-	if (test_response.getcode() / 100) == 3 and test_response.headers.has_key('Location'):
-		url = test_response.headers.getheader('Location').replace('http://', '')
+	if (test_response.status / 100) == 3 and test_response.getheader('Location', None):
+		url = test_response.getheader('Location').replace('http://', '')
 	
 	response = HttpResponse()
 	
