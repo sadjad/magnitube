@@ -14,7 +14,7 @@
 	</div>
 	<script>
 	$('video,audio').mediaelementplayer();
-	var centerIt = function (el /* (jQuery element) Element to center */) {
+	var centerIt = function (el) {
 		if (!el) {
 			return;
 		}
@@ -27,7 +27,7 @@
 		moveIt();
 	};
 	
-	centerIt(".player");
+	centerIt($(".player"));
 	</script>
 </body>
 </html>
