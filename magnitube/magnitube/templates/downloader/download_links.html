@@ -18,18 +18,20 @@
 	{% endfor %}
 	</ul>
 </fieldset>
+{% if current_filename %}
 <fieldset class="results">
 	<legend>Preview</legend>
 	<br />
-	<div class="preview" align="center" style="width:376px;">
-		<video width="100%" height="100%"
+	<div class="preview" align="center" style="width:380px;">
+		<video width="100%" height="100%" preload="none"
 			src="http://magnitu.be/{{video_id}}/{{current_fmt}}/{{current_filename}}?view=1">
 		</video>		
 	</div>
 	<script type="text/javascript">
-		$('video,audio').mediaelementplayer({defaultVideoWidth: 376, videoWidth: 376});
+		$('video,audio').mediaelementplayer({defaultVideoWidth: 380, videoWidth: 380});
 	</script>
 </fieldset>
+{% endif %}
 {% endblock %}
 
 {% block extrahead %}
