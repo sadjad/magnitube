@@ -2,16 +2,16 @@
 <html>
 <head>
 	<title>Video: {{ video_id}}</title>	
-</head>
-<body>
-	<div id="video">
-		Loading Video...
-	</div>
 	<script src="{{STATIC_URL}}jwplayer/jwplayer.js"></script>
 	<script type="text/javascript">
 		jwplayer("video").setup({
 			file: 'http://magnitu.be/{{video_id}}/{{fmt}}/{{filename}}?view=1',
 		})
 	</script>
+</head>
+<body>
+	<div id="video">
+		Loading Video...
+	</div>
 	</body>
 </html>
