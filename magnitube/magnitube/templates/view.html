@@ -10,8 +10,8 @@
 	<script src="{{STATIC_URL}}jwplayer/jwplayer.js"></script>
 	<script type="text/javascript">
 		jwplayer("video").setup({
-			file: '/{{video_id}}/{{fmt}}/?view=1',
-		});
+			file: '/{{video_id}}/{{fmt}}/{{filename}}?view=1',
+		})
 	</script>
 	</body>
 </html>

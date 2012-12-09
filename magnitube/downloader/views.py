@@ -45,6 +45,12 @@ def show_list(request, video_id):
 	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id, 'formats': FORMATS})	
 	
 def view(request, video_id, fmt):
+	fmt = int(fmt)
+	links = request.session['links']	
+	if 'video_id' not in request.session or video_id != request.session['video_id']:
+		return HttpResponseRedirect('/%s/' % video_id)
+		
+	filename = links[fmt][1]
 	return render(request, "view.html", locals())
 
 def download(request, video_id, id):
