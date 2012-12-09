@@ -2,14 +2,16 @@
 <html>
 <head>
 	<title>Video: {{ video_id}}</title>	
-	<link rel="stylesheet" type="text/css"
-	href="http://releases.flowplayer.org/5.2.0/skin/functional.css" />
 </head>
 <body>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="http://releases.flowplayer.org/5.2.0/flowplayer.min.js"></script>
-	<div class="flowplayer">
-		<video src="/{{ video_id }}/{{ fmt }}/?view=1"></video>
+	<div id="video">
+		Loading Video...
 	</div>
-</body>
+	<script src="{{STATIC_URL}}jwplayer/jwplayer.js"></script>
+	<script type="text/javascript">
+		jwplayer("video").setup({
+			file: '/{{video_id}}/{{fmt}}/?view=1',
+		});
+	</script>
+	</body>
 </html>
