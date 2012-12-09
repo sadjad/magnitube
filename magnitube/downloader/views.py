@@ -45,7 +45,23 @@ def show_list(request, video_id):
 	sorted_links = sorted(links.iteritems(), key=lambda a: FORMATS[a[0]]['resolution'])
 	current_fmts = [fmt for fmt, link in sorted_links]
 	
-	return render(request, "downloader/download_links.html", {'links': sorted_links, 'video_id': video_id, 'formats': FORMATS, 'current_fmts': current_fmts})	
+	if 18 in current_fmts:
+		current_fmt = 18
+	elif 43 in current_fmt:
+		current_fmt = 43
+	elif 34 in current_fmt:
+		current_fmt = 34
+	elif 5 in current_fmt:
+		current_fmt = 5
+	elif 6 in current_fmt:
+		current_fmt = 6
+	else:
+		current_fmt = current_fmts[0]
+		
+	current_filename = links[current_fmt][1]
+		
+	
+	return render(request, "downloader/download_links.html", {'links': sorted_links, 'video_id': video_id, 'formats': FORMATS, 'current_fmt': current_fmt, 'current_filename': current_filename})	
 	
 def view(request, video_id, fmt):
 	fmt = int(fmt)
