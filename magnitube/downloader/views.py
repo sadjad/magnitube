@@ -44,6 +44,8 @@ def show_list(request, video_id):
 	
 	return render(request, "downloader/download_links.html", {'links': links, 'video_id': video_id, 'formats': FORMATS})	
 	
+def view(request, video_id, fmt):
+	return render(request, "view.html", locals())
 
 def download(request, video_id, id):
 	id = int(id)
@@ -57,14 +59,16 @@ def download(request, video_id, id):
 	test_request.get_method = lambda: 'HEAD'
 	test_response = urllib2.urlopen(test_request)
 	
-	if test_response.getcode() / 100 == 3 and test_response.headers.has_key('Location'):
+	if (test_response.getcode() / 100) == 3 and test_response.headers.has_key('Location'):
 		url = test_response.headers.getheader('Location').replace('http://', '')	
 	
 	response = HttpResponse()
-	response['Content-Type'] = 'application/octet-stream'
-	response['Content-Disposition'] = 'attachment; filename="%s"' % links[id][1]
+	
+	if 'view' not in request.GET:
+		response['Content-Type'] = 'application/octet-stream'
+		response['Content-Disposition'] = 'attachment; filename="%s"' % links[id][1]
+		
 	response['X-Accel-Redirect'] = "/download/%s/%s" % ("/".join(url.split("?")), links[id][1])
-	response['X-Accel-Limit-Rate'] = '100k'
 	
 	return response
 	

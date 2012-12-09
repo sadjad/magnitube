@@ -41,3 +41,9 @@ nosetests.xml
 *.pyc
 
 *.pyc
+
+magnitube/magnitube/static_files/.DS_Store
+
+magnitube/magnitube/static_files/css/.DS_Store
+
+magnitube/magnitube/.DS_Store

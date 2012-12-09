@@ -9,6 +9,7 @@ urlpatterns = patterns('',
     url(r'^process/$', 'downloader.views.process_download_request', name='process'),
     url(r'^([-\w]+)/$', 'downloader.views.show_list', name='show_list'),
     url(r'^([-\w]+)/(\d+)/$', 'downloader.views.download', name='download'),
+    url(r'^([-\w]+)/(\d+)/view/$', 'downloader.views.view', name='view'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
