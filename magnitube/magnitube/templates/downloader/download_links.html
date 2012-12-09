@@ -20,12 +20,13 @@
 </fieldset>
 <fieldset class="results">
 	<legend>Preview</legend>
-	<div class="preview">
-		<video src="http://magnitu.be/{{video_id}}/{{current_fmt}}/{{current_filename}}?view=1">
+	<div class="preview" align="center">
+		<video
+			src="http://magnitu.be/{{video_id}}/{{current_fmt}}/{{current_filename}}?view=1">
 		</video>		
 	</div>
 	<script type="text/javascript">
-		$('video,audio').mediaelementplayer({videoWidth: 386});
+		$('video,audio').mediaelementplayer({videoWidth: 376});
 	</script>
 </fieldset>
 {% endblock %}
