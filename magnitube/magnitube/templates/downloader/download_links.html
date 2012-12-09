@@ -21,8 +21,8 @@
 <fieldset class="results">
 	<legend>Preview</legend>
 	<div class="preview">
-		<video src="http://magnitu.be/{{video_id}}/{% firstof links_dict|get_item:5|get_item:0 links_dict|get_item:6|get_item:0 links_dict|get_item:18|get_item:0 links_dict|get_item:34|get_item:0 links_dict|get_item:43|get_item:0 links.0.1 %}/{{filename}}?view=1">
-		</video>
+		<video src="http://magnitu.be/{{video_id}}/{% if 18 in current_fmts %}18{% elif 43 in current_fmts %}43{% elif 5 in current_fmts %}5{% elif 6 in current_fmts %}6{% else %}{{current_fmts|get_item:0}}/{{filename}}?view=1">
+		</video>		
 	</div>
 	<script type="text/javascript">
 		$('video,audio').mediaelementplayer({videoWidth: 396});

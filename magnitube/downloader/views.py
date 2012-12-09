@@ -43,8 +43,9 @@ def show_list(request, video_id):
 	request.session['video_id'] = video_id
 	
 	sorted_links = sorted(links.iteritems(), key=lambda a: FORMATS[a[0]]['resolution'])
+	current_fmts = [fmt for fmt, link in sorted_links]
 	
-	return render(request, "downloader/download_links.html", {'links': sorted_links, 'links_dict': links, 'video_id': video_id, 'formats': FORMATS})	
+	return render(request, "downloader/download_links.html", {'links': sorted_links, 'video_id': video_id, 'formats': FORMATS, 'current_fmts': current_fmts})	
 	
 def view(request, video_id, fmt):
 	fmt = int(fmt)
