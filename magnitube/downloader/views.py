@@ -66,7 +66,7 @@ def download(request, video_id, id):
 	test_response = urllib2.urlopen(test_request)
 	
 	if (test_response.getcode() / 100) == 3 and test_response.headers.has_key('Location'):
-		url = test_response.headers.getheader('Location').replace('http://', '')	
+		url = test_response.headers.getheader('Location').replace('http://', '')
 	
 	response = HttpResponse()
 	
